@@ -26,18 +26,25 @@ Link other libraries
 AC_CHECK_LIB([pthread])
 
 # or, Makefile.am:
-# use LDADD inside an executable
 hello_LDADD = ../lib/libhello.la  -L../../amhello/lib/.libs/  -lhello
-
-# use LIBADD inside a library (it's a library itself!)
-#hello_LIBADD = ../lib/libhello.la  -L../../amhello/lib/.libs/  -lhello
 ```
 
-Header file path:
+Header file path
 ```
 # Makefile.am:
-AM_CPPFLAGS = -I../../amhello/lib
+hello_CPPFLAGS = -I../../amhello/lib
+
+# or,
+#AM_CPPFLAGS = -I../../amhello/lib
 ```
 
 Autotools Tutorial:
 https://www.lrde.epita.fr/~adl/dl/autotools-handout-4.pdf
+
+```
+foo_CFLAGS =
+foo_CPPFLAGS =
+foo_LDADD = -lhello -L../hello  # if foo is a program
+foo_LIBADD = -lhello -L../hello  # if foo is a library
+foo_LDFLAGS =
+```
