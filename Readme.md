@@ -41,10 +41,20 @@ Autotools Tutorial:
 https://www.lrde.epita.fr/~adl/dl/autotools-handout-4.pdf
 ```
 foo_CFLAGS =
-foo_CPPFLAGS =
+foo_CXXFLAGS =
+foo_LDFLAGS =
 foo_LDADD = -lhello -L../hello  # if foo is a program
 foo_LIBADD = -lhello -L../hello  # if foo is a library
-foo_LDFLAGS =
+foo_CPPFLAGS =
+```
+
+GNU automake
+https://www.gnu.org/software/automake/manual/automake.pdf
+```
+AM_CFLAGS
+AM_CXXFLAGS
+AM_LDFLAGS
+AM_CPPFLAGS
 ```
 
 Versions
