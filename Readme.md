@@ -20,7 +20,6 @@ $
 ```
 
 Link other libraries
-
 ```
 # configure.ac:
 AC_CHECK_LIB([pthread])
@@ -29,7 +28,7 @@ AC_CHECK_LIB([pthread])
 hello_LDADD = ../lib/libhello.la  -L../../amhello/lib/.libs/  -lhello
 ```
 
-Header file path
+Include header file paths
 ```
 # Makefile.am:
 hello_CPPFLAGS = -I../../amhello/lib
@@ -40,7 +39,6 @@ hello_CPPFLAGS = -I../../amhello/lib
 
 Autotools Tutorial:
 https://www.lrde.epita.fr/~adl/dl/autotools-handout-4.pdf
-
 ```
 foo_CFLAGS =
 foo_CPPFLAGS =
