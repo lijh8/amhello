@@ -26,7 +26,11 @@ Link other libraries
 AC_CHECK_LIB([pthread])
 
 # or, Makefile.am:
+# use LDADD inside an executable
 hello_LDADD = ../lib/libhello.la  -L../../amhello/lib/.libs/  -lhello
+
+# use LIBADD inside a library (it's a library itself!)
+#hello_LIBADD = ../lib/libhello.la  -L../../amhello/lib/.libs/  -lhello
 ```
 
 Header file path:

@@ -1,4 +1,8 @@
-AM_CPPFLAGS = -I$(srcdir)/../lib
 bin_PROGRAMS = hello
 hello_SOURCES = main.c
-hello_LDADD = ../lib/libhello.la
+
+# link libraries. use LDADD inside an executable
+hello_LDADD = ../lib/libhello.la # -L../../amhello/lib/.libs/  -lhello
+
+# include header paths
+AM_CPPFLAGS = -I$(srcdir)/../lib
