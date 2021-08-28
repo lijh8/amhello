@@ -48,3 +48,10 @@ foo_LDADD = -lhello -L../hello  # if foo is a program
 foo_LIBADD = -lhello -L../hello  # if foo is a library
 foo_LDFLAGS =
 ```
+
+Versions
+```
+Debian Linux 11 (bullseye)
+GNU Autoconf 2.69
+GNU automake 1.16.3
+```
