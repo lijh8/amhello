@@ -21,23 +21,23 @@ $
 
 Link other libraries
 ```
-# configure.ac:
+# configure.ac
 AC_CHECK_LIB([pthread])
 
-# or, Makefile.am:
+# or, Makefile.am
 hello_LDADD = ../lib/libhello.la  -L../../amhello/lib/.libs/  -lhello
 ```
 
 Include header file paths
 ```
-# Makefile.am:
+# Makefile.am
 hello_CPPFLAGS = -I../../amhello/lib
 
 # or,
 #AM_CPPFLAGS = -I../../amhello/lib
 ```
 
-Autotools Tutorial:
+Autotools Tutorial
 https://www.lrde.epita.fr/~adl/dl/autotools-handout-4.pdf
 ```
 foo_CFLAGS =
