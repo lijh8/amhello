@@ -1,12 +1,13 @@
 bin_PROGRAMS = hello
 hello_SOURCES = main.c
 
-# include header paths
 hello_CPPFLAGS = -I$(srcdir)/../lib
 
-# link libraries
+hello_CFLAGS =
+
+# including LDFLAGS, LDLIBS
 hello_LDADD = ../lib/libhello.la # -L../../amhello/lib/.libs/  -lhello
 
-if FOO
-hello_CPPFLAGS += -DFOO
+if NDEBUG
+hello_CPPFLAGS += -DNDEBUG
 endif
