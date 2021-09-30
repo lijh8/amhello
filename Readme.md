@@ -42,9 +42,9 @@ hello_CPPFLAGS = -I../../amhello/lib
 
 Options from commandline, configure.ac, Makefile.am to C source files
 ```
-./configure --enable-foo
+./configure --enable-ndebug
 ./configure
-./configure --disable-foo
+./configure --disable-ndebug
 ```
 
 Autotools Tutorial
@@ -73,3 +73,8 @@ Debian Linux 11 (bullseye)
 GNU Autoconf 2.69
 GNU automake 1.16.3
 ```
+
+Links
+
+https://stackoverflow.com/questions/32092644/autotools-is-there-a-short-for-ac-arg-enable-action-if-given
+https://stackoverflow.com/questions/11898782/how-to-conditionally-compile-in-a-autotools-project
