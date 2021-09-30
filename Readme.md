@@ -32,9 +32,13 @@ Include header file paths
 ```
 # Makefile.am
 hello_CPPFLAGS = -I../../amhello/lib
+```
 
-# or,
-#AM_CPPFLAGS = -I../../amhello/lib
+Options from commandline, configure.ac, Makefile.am to C source files
+```
+./configure --enable-foo
+./configure
+./configure --disable-foo
 ```
 
 Autotools Tutorial
