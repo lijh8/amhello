@@ -8,7 +8,11 @@ Try out
 ```
 $ autoreconf -i
 $ ./configure
-$ make
+$ make && make install
+$ hello
+$ make DESTDIR=/home/ljh/tmp install
+$ cd /home/ljh/tmp
+$ tar cf hello.tar usr
 
 $ src/hello
 say.c:5: hello
