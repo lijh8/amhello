@@ -13,6 +13,8 @@ $ hello
 $ make DESTDIR=/home/ljh/tmp install
 $ cd /home/ljh/tmp
 $ tar cf hello.tar usr
+$ cd /
+$ tar xf hello.tar
 
 $ src/hello
 say.c:5: hello
