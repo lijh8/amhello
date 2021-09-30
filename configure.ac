@@ -7,15 +7,12 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AC_CHECK_LIB([pthread])
 
-AC_ARG_ENABLE(
-    [foo],
-    [--enable-foo turn on foo],
-    [if test "$enableval" == "yes"; then
-        foo=true
-    fi]
+AC_ARG_ENABLE([ndebug],
+    [--enable-ndebug ndebug means release and turns off assert],
+    [enable_ndebug=yes]
 )
 
-AM_CONDITIONAL([FOO], [test x$foo = xtrue])
+AM_CONDITIONAL([NDEBUG], [test x$enable_ndebug = xyes])
 
 AC_CONFIG_FILES([
     Makefile
