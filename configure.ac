@@ -9,7 +9,7 @@ AC_CHECK_LIB([pthread])
 
 AC_ARG_ENABLE([ndebug],
     [--enable-ndebug turn off assert],
-    [if test "$enableval" == "yes"; then ndebug=yes; fi]
+    [if test "$enableval" = "yes"; then ndebug=yes; fi]
 )
 
 AM_CONDITIONAL([NDEBUG], [test x$ndebug = xyes])
