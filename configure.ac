@@ -3,8 +3,10 @@
 
 AC_PREREQ([2.69])
 AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+AM_INIT_AUTOMAKE([foreign -Wall -Werror])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIRS([m4])
 
 # Checks for programs.
 AC_PROG_CXX
@@ -15,6 +17,8 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
 # AC_PROG_RANLIB # rendered obsolete by 'LT_INIT'
+AM_PROG_AR
+LT_INIT
 
 # Checks for libraries.
 
@@ -27,11 +31,6 @@ AC_PROG_MAKE_SET
 AC_CONFIG_FILES([Makefile
                  lib/Makefile
                  src/Makefile])
-
-AC_CONFIG_MACRO_DIRS([m4])
-AM_PROG_AR
-AM_INIT_AUTOMAKE([foreign -Wall -Werror])
-LT_INIT
 
 AC_ARG_ENABLE([ndebug],
               [AS_HELP_STRING([--enable-ndebug], [turn off assert])],
