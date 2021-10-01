@@ -8,7 +8,7 @@ AC_CONFIG_MACRO_DIRS([m4])
 AC_CHECK_LIB([pthread])
 
 AC_ARG_ENABLE([ndebug],
-    [--enable-ndebug turn off assert],
+    [AS_HELP_STRING([--enable-ndebug], [turn off assert])],
     [if test "$enableval" = "yes"; then ndebug=yes; fi]
 )
 
