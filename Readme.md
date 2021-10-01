@@ -6,7 +6,9 @@ $ sudo apt install automake autoconf libtool pkg-config gettext flex bison
 
 Try out
 ```
-$ autoreconf -i
+$ autoscan
+$ mv configure.scan configure.ac
+$ autoreconf -i  # ./autogen.sh
 $ ./configure
 $ make && make install
 $ hello
