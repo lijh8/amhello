@@ -40,7 +40,7 @@ Include header file paths
 hello_CPPFLAGS = -I../../amhello/lib
 ```
 
-Options from commandline, configure.ac, Makefile.am to C source files
+Conditional option (from commandline, configure.ac, Makefile.am to C source files)
 ```
 ./configure --enable-ndebug
 ./configure
@@ -76,6 +76,5 @@ GNU automake 1.16.3
 
 Links
 
-https://stackoverflow.com/questions/32092644/autotools-is-there-a-short-for-ac-arg-enable-action-if-given
-
-https://stackoverflow.com/questions/11898782/how-to-conditionally-compile-in-a-autotools-project
+- https://stackoverflow.com/questions/32092644/autotools-is-there-a-short-for-ac-arg-enable-action-if-given
+- https://stackoverflow.com/questions/11898782/how-to-conditionally-compile-in-a-autotools-project
