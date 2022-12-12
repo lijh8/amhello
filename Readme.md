@@ -1,82 +1,48 @@
-Install tools
-```
-$ sudo apt install build-essential
-$ sudo apt install automake autoconf libtool pkg-config gettext flex bison
-```
+Autotools Tutorial, Alexandre Duret-Lutz
+https://www.lrde.epita.fr/~adl/autotools.html
+Handout version in PDF (4 slides per pages without animations, for printing)
+https://www.lrde.epita.fr/~adl/dl/autotools-handout-4.pdf
 
-Try out
-```
+$ apt install build-essential git perl flex bison
+$ apt install automake autoconf libtool pkg-config gettext gperf
+
 $ autoscan
 $ mv configure.scan configure.ac
-$ autoreconf -i  # ./autogen.sh
-$ ./configure
-$ make && make install
-$ hello
-$ make DESTDIR=/home/ljh/tmp install
-$ cd /home/ljh/tmp
-$ tar cf hello.tar usr
-$ cd /
-$ tar xf hello.tar
-
-$ src/hello
-say.c:5: hello
+$ vi configure.ac
+AC_CONFIG_MACRO_DIRS([m4])
+AC_PROG_CC # CXX
+AC_LANG(C) # C++
+AC_PROG_CPP
+LT_INIT
+AC_CONFIG_FILES([Makefile src/Makefile])
+AC_OUTPUT
 $
-
-$ ls lib/.libs
-libhello.la  libhello.so
+$ vi Makefile
+SUBDIRS = src lib
+ACLOCAL_AMFLAGS = -I m4
 $
-```
+$ vi src/Makefile
+bin_PROGRAMS = hello
+hello_SOURCES = main.c
+hello_CPPFLAGS = -I$(srcdir)/../lib
+hello_CFLAGS = -std=c99 # CXXFLAGS
+hello_LDADD = ../lib/libhello.la # -L../../amhello/lib/.libs/ -lhello
+$
+$ vi lib/Makefile
+lib_LTLIBRARIES = libhello.la
+libhello_la_SOURCES = say.c say.h
+libhello_la_CPPFLAGS = -I../lib
+libhello_la_LIBADD = ../lib/libhello.la # -L../../amhello/lib/.libs/ -lhello
+$
+$ mkdir m4
+$ autoreconf -i # or, put it in autogen.sh
+$ ./configure # generate Makefile
+$ make
 
-Link other libraries
-```
-# configure.ac
-AC_CHECK_LIB([pthread])
-
-# or, Makefile.am
-hello_LDADD = ../lib/libhello.la  -L../../amhello/lib/.libs/  -lhello
-```
-
-Include header file paths
-```
-# Makefile.am
-hello_CPPFLAGS = -I../../amhello/lib
-```
-
-Conditional option (from commandline, configure.ac, Makefile.am to C source files)
-```
-./configure --enable-ndebug
-./configure
-./configure --disable-ndebug
-```
-
-Autotools Tutorial
-https://www.lrde.epita.fr/~adl/dl/autotools-handout-4.pdf
-```
-foo_CFLAGS =
-foo_CXXFLAGS =
-foo_LDFLAGS =
-foo_LDADD = -lhello -L../hello  # if foo is a program
-foo_LIBADD = -lhello -L../hello  # if foo is a library
-foo_CPPFLAGS =
-```
-
-GNU automake
-https://www.gnu.org/software/automake/manual/automake.pdf
-```
-AM_CFLAGS
-AM_CXXFLAGS
-AM_LDFLAGS
-AM_CPPFLAGS
-```
-
-Versions
-```
-Debian Linux 11 (bullseye)
-GNU Autoconf 2.69
-GNU automake 1.16.3
-```
-
-Links
-
-- https://stackoverflow.com/questions/32092644/autotools-is-there-a-short-for-ac-arg-enable-action-if-given
-- https://stackoverflow.com/questions/11898782/how-to-conditionally-compile-in-a-autotools-project
+$ make DESTDIR=$HOME/inst install # or, ./configure --PREFIX $HOME/inst
+$ cd $HOME/inst
+$ tar zcvf ~/amhello-1.0-i686.tar.gz .
+~/amhello-1.0-i686.tar.gz is ready to be uncompressed in / on any hosts
+$ ls ./lib/.libs
+libhello.a  libhello.la  libhello.lai  libhello.so  say.o
+$
