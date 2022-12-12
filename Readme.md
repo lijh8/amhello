@@ -1,3 +1,4 @@
+```
 Autotools Tutorial, Alexandre Duret-Lutz
 https://www.lrde.epita.fr/~adl/autotools.html
 Handout version in PDF (4 slides per pages without animations, for printing)
@@ -46,3 +47,4 @@ $ tar zcvf ~/amhello-1.0-i686.tar.gz .
 $ ls ./lib/.libs
 libhello.a  libhello.la  libhello.lai  libhello.so  say.o
 $
+```
